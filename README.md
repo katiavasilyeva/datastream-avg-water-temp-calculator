@@ -1,16 +1,26 @@
+## DataStream CSV Water Temperature Calculator 
+A client-side CSV parser that calculates the average water temperature given a monitoring location and CSV file.
+
+## Demo 
+![alt text](demo.png)
+
+##  Technical Implementation
+- **Framework**: SvelteKit
+- **CSV Parsing**: Papa Parse
+- **Styling**: TailwindCSS, shadcn-svelte
 
 
 ## Developing
 ```sh
 pnpm install
 
-npm run dev
+pnpm run dev
 ```
 
 ## Testing 
 
 ```sh
-npm run test
+pnpm run test
 ```
 
 ## Building
@@ -18,5 +28,5 @@ npm run test
 To create a production version of the app:
 
 ```sh
-npm run build
+pnpm run build
 ```
