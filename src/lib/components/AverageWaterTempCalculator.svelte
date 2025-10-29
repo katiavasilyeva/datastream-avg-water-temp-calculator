@@ -13,15 +13,14 @@
 		[key: string]: string;
 	}
 
-	let fileInput: HTMLInputElement;
-	let parsedData: CSVRow[] = [];
-	let monitoringLocationId = '';
-	let averageResult: number | null = null;
-	let errorMessage = '';
-	let fileName = '';
-	let isDataLoaded = false;
+	let fileInput: HTMLInputElement| undefined = $state();
+	let parsedData: CSVRow[] = $state([]);
+	let monitoringLocationId: string = $state('');
+	let averageResult: number | null = $state(null);
+	let errorMessage: string = $state('');
+	let fileName: string = $state('');
 
-	$: isDataLoaded = parsedData.length > 0;
+	let isDataLoaded = $derived(parsedData.length > 0);
 
 	function handleFileUpload(event: Event) {
 		const target = event.target as HTMLInputElement;
@@ -99,7 +98,7 @@
 					type="file"
 					accept=".csv"
 					bind:this={fileInput}
-					on:change={handleFileUpload}
+					onchange={handleFileUpload}
 					class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
 				/>
 				{#if fileName}
